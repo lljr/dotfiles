@@ -93,7 +93,7 @@
 #+END_SRC
 
 * Packages
-** Vertico / CtrlF
+** Vertico / CtrlF / Marginalia
   Better buffer search and improved minibuffer experience
   #+begin_src emacs-lisp
     (vertico-mode)
