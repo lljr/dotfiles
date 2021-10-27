@@ -93,20 +93,6 @@
 #+END_SRC
 
 * Packages
-** Dashboard
-
-#+begin_src emacs-lisp
-  (setq dashboard-center-content t
-        dashboard-projects-backend 'project-el
-        ;; dashboard-items '((projects . 5)
-        ;;                   (recents  . 10)
-        ;;                   (bookmarks . 3)
-        ;;                   (agenda . 3)
-        ;;                   (registers . 3))
-        )
-
- (dashboard-setup-startup-hook)
-#+end_src
 ** Vertico / CtrlF
   Better buffer search and improved minibuffer experience
   #+begin_src emacs-lisp
