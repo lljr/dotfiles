@@ -160,7 +160,6 @@ Auto-completion in Emacs.
 Manage several buffers interactively
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x C-b") 'ibuffer)
-  (add-hook 'ibuffer-mode-hook 'ibuffer-vc-set-filter-groups-by-vc-root)
 #+END_SRC
 
 ** Web Development
