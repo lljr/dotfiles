@@ -1,0 +1,9 @@
+;;; -*- mode: org; -*-
+
+* Getting Started
+These are my configuration files. For now, there is only a file that configurates Emacs in ~/emacs/config.org~.
+
+Since the configuration is in an Org Mode file, run ~M-x org-tangle~ when visiting the file. This command or
+function will paste all the code blocks into ~init.el~, the file Emacs reads to change its configuration.
+
+~org-tangle~ binds to ~C-v C-t~. The previous keychord may be used to invoke ~org-tangle~.
