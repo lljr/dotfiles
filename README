@@ -2,7 +2,7 @@
 
 * Getting Started
 These are my configuration files.
-For now, there is only a file that configurates Emacs in ~/emacs/config.org~.
+For now, there is only a file that configures Emacs in ~/emacs/config.org~.
 
 Since the configuration is in an Org Mode file, run ~M-x org-babel-tangle~ when visiting the file.
 This command, or function, will paste all the code blocks to ~init.el~, the file Emacs reads to change its configuration.
