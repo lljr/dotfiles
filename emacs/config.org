@@ -153,47 +153,23 @@ Manage several buffers interactively
 #+END_SRC
 
 ** Web Development
-*** Emmet
-#+BEGIN_SRC emacs-lisp
-  (with-eval-after-load 'emmet-mode
-    (setq emmet-move-cursor-between-quotes t      ;  cursor to be positioned between first empty quotes after expanding
-          emmet-expand-jsx-className? nil
-          emmet-self-closing-tag-style " /"))
-#+END_SRC
 *** CSS
 #+BEGIN_SRC emacs-lisp
-  (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
   ;; Remap css-lookup-symbol to fix global counsel-mode key rebindings
   (add-hook 'css-mode-hook
             (lambda () (define-key css-mode-map (kbd "C-h S") 'css-lookup-symbol)))
-
 #+END_SRC
-
-*** HTML
-#+BEGIN_SRC emacs-lisp
-  (add-hook 'html-mode-hook 'emmet-mode)
-  (add-hook 'html-mode-hook (lambda ()(setq emmet-indentation 2)))
-#+END_SRC
-
 *** Web Mode
 #+BEGIN_SRC emacs-lisp
-  (add-hook 'web-mode-hook 'emmet-mode)
-
   (add-to-list 'auto-mode-alist '("/templates/.*\\.html?\\'" . web-mode))
-  ;; (add-to-list 'auto-mode-alist '("/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.\\(handlebars\\|hbs\\)\\'" . web-mode))
 
   (with-eval-after-load 'web-mode
     (setq	web-mode-engines-alist
-          '(
-            ("ctemplate" . "\\.\\(handlebars\\|hbs\\)\\'")
+          '(("ctemplate" . "\\.\\(handlebars\\|hbs\\)\\'")
             ("django" . "./templates/.*\\.html?\\'"))
-          ;; web-mode-content-types-alist
-          ;; '(
-          ;;   ("jsx" . "/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'"))
-          )
 
-    (setq web-mode-enable-html-entities-fontification t
+          web-mode-enable-html-entities-fontification t
           web-mode-enable-css-colorization t
           web-mode-enable-current-column-highlight t
           web-mode-markup-indent-offset 2
