@@ -314,6 +314,7 @@ Most of these improve coding experience.
    (add-hook 'scheme-mode-hook 'electric-pair-local-mode)
    (add-hook 'python-mode-hook 'electric-pair-local-mode)
    (add-hook 'css-mode-hook 'electric-pair-local-mode)
+   (add-hook 'js-jsx-mode 'electric-pair-local-mode)
 
    ;; Add extra pairs for org mode
    (defvar org-electric-pairs '((?= . ?=)) "Electric pairs for org-mode.")
@@ -329,6 +330,12 @@ Most of these improve coding experience.
      (setq-local electric-pair-text-pairs electric-pair-pairs))
    (add-hook 'js-mode-hook 'js-mode-add-electric-pairs)
    (add-hook 'mhtml-mode-hook 'js-mode-add-electric-pairs) ; needs it for `script` tags
+
+   (defvar js-jsx-mode-electric-pairs '((?< . ?>)) "Electric pairs for js-jsx-mode.")
+   (defun js-jsx-mode-add-electric-pairs ()
+     (setq-local electric-pair-pairs (append electric-pair-pairs js-jsx-mode-electric-pairs))
+     (setq-local electric-pair-text-pairs electric-pair-pairs))
+   (add-hook 'js-jsx-mode-hook 'js-jsx-mode-add-electric-pairs)
 
    ;; Add extra pairs for web mode (jinja)
    (defvar web-mode-jinja-electric-pairs '((?% . ?%) (?< . ?>)) "Electric pairs for web-mode.")
