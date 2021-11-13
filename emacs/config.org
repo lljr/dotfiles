@@ -65,6 +65,13 @@
 
   (global-so-long-mode 1)
   (fset 'yes-or-no-p 'y-or-n-p) ; Prompts that require 'yes' or 'no' accept 'y' or 'n'
+
+  ;; Change Emacs backup files location and disable lock files
+  ;; This change prevents the crashing of the React server after any file change
+  (setq backup-directory-alist
+        '(("." . "~/.emacs.d/file-backups")
+
+          create-lockfiles nil))
 #+END_SRC
 
 ** Custom prefix keys
