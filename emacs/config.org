@@ -191,6 +191,8 @@ Manage several buffers interactively
 *** Javascript
   #+begin_src emacs-lisp
     (setq js-indent-level 2)
+
+    (add-hook 'js-mode-hook 'js-jsx-enable)
   #+end_src
 ** Lisp
 *** Clojure
