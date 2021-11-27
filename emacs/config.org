@@ -293,8 +293,7 @@ Create slide-shows with Org mode.
 ** Extras
 Nice to have packages and functionality.
 Most of these improve coding experience.
-*** Emacs
-**** Misc
+*** Misc
  #+begin_src emacs-lisp
    ;; Highlight matching parenthesis
    (show-paren-mode t)
@@ -355,7 +354,7 @@ Most of these improve coding experience.
    (eval-after-load 'dash '(dash-enable-font-lock))
  #+end_src
 
-**** Prettify Symbols
+*** Prettify Symbols
   #+BEGIN_SRC emacs-lisp
     (global-prettify-symbols-mode t)
 
@@ -386,8 +385,7 @@ Most of these improve coding experience.
                 "Beautify Emacs Symbols"
                 (push '("<=" . "≤") prettify-symbols-alist)))
   #+END_SRC
-*** Not included in Emacs
-**** Rainbow Delimiters
+*** Rainbow Delimiters
  #+begin_src emacs-lisp
    (custom-set-faces
           '(rainbow-delimiters-depth-1-face ((t (:foreground "blue violet"))))
@@ -406,10 +404,3 @@ Most of these improve coding experience.
    (add-hook 'lisp-interaction-mode-hook #'rainbow-delimiters-mode)
    (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
  #+end_src
-**** Multiple Cursors
-#+begin_src emacs-lisp
-  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-#+end_src
