@@ -400,9 +400,9 @@ Manage several buffers interactively
     (add-hook 'js-mode-hook #'yas-minor-mode)
     (add-hook 'js-mode-hook 'js-jsx-enable)
 
-    (with-eval-after-load 'js-jsx
+    (with-eval-after-load 'js
       (require 'sgml-mode)
-      (define-key js-jsx-mode-map (kbd "C-c C-e") 'sgml-close-tag))
+      (define-key js-mode-map (kbd "C-c C-e") 'sgml-close-tag))
 
   #+end_src
 ** Lisp
