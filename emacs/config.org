@@ -272,7 +272,6 @@ Create slide-shows with Org mode.
     (org-image-actual-width nil))
 #+end_src
 ** Reading PDF and EPUB files
-
 *** PDF Tools
    Read PDF files in Emacs buffers.
  #+BEGIN_SRC emacs-lisp
