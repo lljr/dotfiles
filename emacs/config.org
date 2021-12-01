@@ -219,7 +219,25 @@ Manage several buffers interactively
 #+begin_src emacs-lisp
   (with-eval-after-load 'yasnippet
     (add-to-list 'yas-snippet-dirs "~/src/guix/etc/snippets")
-    (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
+    ;; TODO Programatically create "snippets" directory,
+    ;; snippet's modes and
+    ;; append snippet content
+    ;; do this on first install
+
+    ;; `make-directory' singals an error so we use condition-case
+    ;; to handle it
+    ;; (condition-case nil
+
+
+    ;;     (if (= "/home/wario/.emacs.d/"
+    ;;            (file-name-directory (or load-file-name (buffer-file-name))))
+    ;;         (progn
+    ;;           (make-directory "snippets/js-mode" t)
+    ;;           )
+    ;;       (message "Error creating Yasnippets directory: Incorrect directory.")
+    ;;      )
+        )
+
     (yas-reload-all)
     (add-hook 'js-mode-hook #'yas-minor-mode))
 #+end_src
