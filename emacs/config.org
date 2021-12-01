@@ -402,7 +402,10 @@ Manage several buffers interactively
 
     (with-eval-after-load 'js
       (require 'sgml-mode)
-      (define-key js-mode-map (kbd "C-c C-e") 'sgml-close-tag))
+      (define-key js-mode-map (kbd "C-c C-e") 'sgml-close-tag)
+      (define-key js-mode-map (kbd "C-c C-f") 'sgml-skip-tag-forward)
+      (define-key js-mode-map (kbd "C-c C-b") 'sgml-skip-tag-backward)
+      (define-key js-mode-map (kbd "C-c C-k") 'sgml-delete-tag))
 
   #+end_src
 ** Lisp
