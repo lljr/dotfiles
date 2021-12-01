@@ -354,7 +354,7 @@ Manage several buffers interactively
     ;; (condition-case nil
 
 
-    ;;     (if (= "/home/wario/.emacs.d/"
+    ;;     (if (= (concat (getenv "HOME") ".emacs.d/")
     ;;            (file-name-directory (or load-file-name (buffer-file-name))))
     ;;         (progn
     ;;           (make-directory "snippets/js-mode" t)
