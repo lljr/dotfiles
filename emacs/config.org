@@ -398,8 +398,7 @@ Manage several buffers interactively
     (setq js-indent-level 2)
 
     (add-hook 'js-mode-hook #'yas-minor-mode)
-    (setq js-jsx-syntax t)
-    ;;(add-hook 'js-mode-hook 'js-jsx-enable)
+    (add-hook 'js-mode-hook 'js-jsx-enable)
 
     (with-eval-after-load 'js-jsx
       (require 'sgml-mode)
