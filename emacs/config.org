@@ -99,148 +99,6 @@
   (define-key my-super-z-map (kbd "a") 'add-file-local-variable-prop-line)
 #+END_SRC
 
-* Packages
-** Vertico / CtrlF / Marginalia
-  Better buffer search and improved minibuffer experience
-  #+begin_src emacs-lisp
-    (vertico-mode)
-    (marginalia-mode)
-    (ctrlf-mode +1)
-
-    (add-hook 'pdf-isearch-minor-mode-hook
-              (lambda () (ctrlf-local-mode -1))) ; Disable when reading PDFs
-
-    (setq completion-styles '(orderless)
-          completion-category-defaults nil
-          completion-category-overrides '((file (styles . (partial-completion)))))
-
-    ;; Add prompt indicator to `completing-read-multiple'.
-    (defun crm-indicator (args)
-      (cons (concat "[CRM] " (car args)) (cdr args)))
-    (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
-
-
-    ;; Do not allow the cursor in the minibuffer prompt
-    (setq minibuffer-prompt-properties
-          '(read-only t cursor-intangible t face minibuffer-prompt))
-    (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
-
-    (advice-add #'vertico--setup :after
-                (lambda (&rest _)
-                  (setq-local completion-auto-help nil
-                              completion-show-inline-help nil)))
-  #+end_src
-** Company
-Auto-completion in Emacs.
-#+BEGIN_SRC emacs-lisp
-  (add-hook 'after-init-hook 'global-company-mode)
-
-  (with-eval-after-load 'company
-      (setq company-echo-delay 0.3
-        company-idle-delay 1
-        company-tooltip-limit 10
-        company-tooltip-align-annotations t
-        company-minimum-prefix-length 2))
-#+END_SRC
-** Dired
-#+BEGIN_SRC emacs-lisp
-  (setq dired-recursive-copies 'always ; “always” means no asking
-        dired-recursive-deletes 'top ; “top” means ask once
-        dired-dwim-target t)
-
-  (add-hook 'dired-mode-hook '(lambda ()
-                                (dired-hide-details-mode 1)))
-
-  (put 'dired-find-alternate-file 'disabled nil)
-#+END_SRC
-** Ibuffer
-Manage several buffers interactively
-#+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-x C-b") 'ibuffer)
-#+END_SRC
-
-** Web Development
-*** CSS
-#+BEGIN_SRC emacs-lisp
-  ;; Remap css-lookup-symbol to fix global counsel-mode key rebindings
-  (add-hook 'css-mode-hook
-            (lambda () (define-key css-mode-map (kbd "C-h S") 'css-lookup-symbol)))
-#+END_SRC
-*** Web Mode
-#+BEGIN_SRC emacs-lisp
-  (add-to-list 'auto-mode-alist '("/templates/.*\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.\\(handlebars\\|hbs\\)\\'" . web-mode))
-
-  (with-eval-after-load 'web-mode
-    (setq	web-mode-engines-alist
-          '(("ctemplate" . "\\.\\(handlebars\\|hbs\\)\\'")
-            ("django" . "./templates/.*\\.html?\\'"))
-
-          web-mode-enable-html-entities-fontification t
-          web-mode-enable-css-colorization t
-          web-mode-enable-current-column-highlight t
-          web-mode-markup-indent-offset 2
-          web-mode-enable-auto-closing t
-          web-mode-enable-auto-opening t
-          web-mode-enable-auto-pairing nil
-          web-mode-enable-auto-indentation nil
-
-          web-mode-code-indent-offset 2))
-
-#+END_SRC
-*** Javascript
-  #+begin_src emacs-lisp
-    (setq js-indent-level 2)
-
-    (add-hook 'js-mode-hook 'js-jsx-enable)
-  #+end_src
-** Lisp
-*** Clojure
-  #+begin_src emacs-lisp
-    (setq cider-font-lock-dynamically '(macro core function var))
-    (setq cider-eval-result-prefix ";; => ")
-    (setq cider-repl-display-help-banner nil)
-  #+end_src
-
-**** Exec-path/CLJS setup
-    To use Node with NVM use this
-    #+begin_src emacs-lisp
-      (exec-path-from-shell-copy-env "PATH")
-      (exec-path-from-shell-initialize)
-    #+end_src
-*** Scheme
- #+begin_src emacs-lisp
-   (setq geiser-active-implementations '(guile))
-
-   (with-eval-after-load 'geiser-guile
-     (add-to-list 'geiser-guile-load-path "~/src/guix"))
- #+end_src
-** Yasnippet
-#+begin_src emacs-lisp
-  (with-eval-after-load 'yasnippet
-    (add-to-list 'yas-snippet-dirs "~/src/guix/etc/snippets")
-    ;; TODO Programatically create "snippets" directory,
-    ;; snippet's modes and
-    ;; append snippet content
-    ;; do this on first install
-
-    ;; `make-directory' singals an error so we use condition-case
-    ;; to handle it
-    ;; (condition-case nil
-
-
-    ;;     (if (= "/home/wario/.emacs.d/"
-    ;;            (file-name-directory (or load-file-name (buffer-file-name))))
-    ;;         (progn
-    ;;           (make-directory "snippets/js-mode" t)
-    ;;           )
-    ;;       (message "Error creating Yasnippets directory: Incorrect directory.")
-    ;;      )
-        )
-
-    (yas-reload-all)
-    (add-hook 'js-mode-hook #'yas-minor-mode))
-#+end_src
 ** Org
 #+begin_src emacs-lisp
   (global-set-key (kbd "<f6>") 'org-capture)
@@ -420,4 +278,152 @@ Most of these improve coding experience.
    (add-hook 'ielm-mode-hook #'rainbow-delimiters-mode)
    (add-hook 'lisp-interaction-mode-hook #'rainbow-delimiters-mode)
    (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
+ #+end_src
+* Packages
+** Vertico / CtrlF / Marginalia
+  Better buffer search and improved minibuffer experience
+  #+begin_src emacs-lisp
+    (vertico-mode)
+    (marginalia-mode)
+    (ctrlf-mode +1)
+
+    (add-hook 'pdf-isearch-minor-mode-hook
+              (lambda () (ctrlf-local-mode -1))) ; Disable when reading PDFs
+
+    (setq completion-styles '(orderless)
+          completion-category-defaults nil
+          completion-category-overrides '((file (styles . (partial-completion)))))
+
+    ;; Add prompt indicator to `completing-read-multiple'.
+    (defun crm-indicator (args)
+      (cons (concat "[CRM] " (car args)) (cdr args)))
+    (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+
+
+    ;; Do not allow the cursor in the minibuffer prompt
+    (setq minibuffer-prompt-properties
+          '(read-only t cursor-intangible t face minibuffer-prompt))
+    (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+
+    (advice-add #'vertico--setup :after
+                (lambda (&rest _)
+                  (setq-local completion-auto-help nil
+                              completion-show-inline-help nil)))
+  #+end_src
+** Company
+Auto-completion in Emacs.
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'after-init-hook 'global-company-mode)
+
+  (with-eval-after-load 'company
+      (setq company-echo-delay 0.3
+        company-idle-delay 1
+        company-tooltip-limit 10
+        company-tooltip-align-annotations t
+        company-minimum-prefix-length 2))
+#+END_SRC
+** Dired
+#+BEGIN_SRC emacs-lisp
+  (setq dired-recursive-copies 'always ; “always” means no asking
+        dired-recursive-deletes 'top ; “top” means ask once
+        dired-dwim-target t)
+
+  (add-hook 'dired-mode-hook '(lambda ()
+                                (dired-hide-details-mode 1)))
+
+  (put 'dired-find-alternate-file 'disabled nil)
+#+END_SRC
+** Ibuffer
+Manage several buffers interactively
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+#+END_SRC
+
+** Yasnippet
+#+begin_src emacs-lisp
+  (with-eval-after-load 'yasnippet
+    (add-to-list 'yas-snippet-dirs "~/src/guix/etc/snippets")
+    (yas-reload-all)
+    ;; TODO Programatically create "snippets" directory,
+    ;; snippet's modes and
+    ;; append snippet content
+    ;; do this on first install
+
+    ;; `make-directory' singals an error so we use condition-case
+    ;; to handle it
+    ;; (condition-case nil
+
+
+    ;;     (if (= "/home/wario/.emacs.d/"
+    ;;            (file-name-directory (or load-file-name (buffer-file-name))))
+    ;;         (progn
+    ;;           (make-directory "snippets/js-mode" t)
+    ;;           )
+    ;;       (message "Error creating Yasnippets directory: Incorrect directory.")
+    ;;      )
+        )
+#+end_src
+
+** Web Development
+*** CSS
+#+BEGIN_SRC emacs-lisp
+  ;; Remap css-lookup-symbol to fix global counsel-mode key rebindings
+  (add-hook 'css-mode-hook
+            (lambda () (define-key css-mode-map (kbd "C-h S") 'css-lookup-symbol)))
+#+END_SRC
+*** Web Mode
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'auto-mode-alist '("/templates/.*\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.\\(handlebars\\|hbs\\)\\'" . web-mode))
+
+  (with-eval-after-load 'web-mode
+    (setq	web-mode-engines-alist
+          '(("ctemplate" . "\\.\\(handlebars\\|hbs\\)\\'")
+            ("django" . "./templates/.*\\.html?\\'"))
+
+          web-mode-enable-html-entities-fontification t
+          web-mode-enable-css-colorization t
+          web-mode-enable-current-column-highlight t
+          web-mode-markup-indent-offset 2
+          web-mode-enable-auto-closing t
+          web-mode-enable-auto-opening t
+          web-mode-enable-auto-pairing nil
+          web-mode-enable-auto-indentation nil
+
+          web-mode-code-indent-offset 2))
+
+#+END_SRC
+*** Javascript
+  #+begin_src emacs-lisp
+    (setq js-indent-level 2)
+
+    (add-hook 'js-mode-hook #'yas-minor-mode)
+    (setq js-jsx-syntax t)
+    ;;(add-hook 'js-mode-hook 'js-jsx-enable)
+
+    (with-eval-after-load 'js-jsx
+      (require 'sgml-mode)
+      (define-key js-jsx-mode-map (kbd "C-c C-e") 'sgml-close-tag))
+
+  #+end_src
+** Lisp
+*** Clojure
+  #+begin_src emacs-lisp
+    (setq cider-font-lock-dynamically '(macro core function var))
+    (setq cider-eval-result-prefix ";; => ")
+    (setq cider-repl-display-help-banner nil)
+  #+end_src
+
+**** Exec-path/CLJS setup
+    To use Node with NVM use this
+    #+begin_src emacs-lisp
+      (exec-path-from-shell-copy-env "PATH")
+      (exec-path-from-shell-initialize)
+    #+end_src
+*** Scheme
+ #+begin_src emacs-lisp
+   (setq geiser-active-implementations '(guile))
+
+   (with-eval-after-load 'geiser-guile
+     (add-to-list 'geiser-guile-load-path "~/src/guix"))
  #+end_src
