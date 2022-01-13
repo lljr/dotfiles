@@ -280,7 +280,7 @@ Most of these improve coding experience.
    (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
  #+end_src
 * Packages
-** Vertico / CtrlF / Marginalia
+** Vertico / CtrlF / Marginalia / Consult
   Better buffer search and improved minibuffer experience
   #+begin_src emacs-lisp
     (vertico-mode)
@@ -309,6 +309,15 @@ Most of these improve coding experience.
                 (lambda (&rest _)
                   (setq-local completion-auto-help nil
                               completion-show-inline-help nil)))
+
+    ;; Consult
+    (setq consult-project-root-function (lambda () (locate-dominating-file "." ".git")))
+
+    (global-set-key (kbd "C-x b") 'consult-buffer)
+    (global-set-key (kbd "C-x 4 b") 'consult-buffer-other-window)
+    (global-set-key (kbd "M-s G") 'consult-git-grep)
+    (global-set-key (kbd "M-g g") 'consult-goto-line)
+    (global-set-key (kbd "M-g M-g") 'consult-goto-line)
   #+end_src
 ** Company
 Auto-completion in Emacs.
