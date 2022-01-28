@@ -35,6 +35,9 @@
 
                 bidi-paragraph-direction 'left-to-right ; Just work with left to right langs
                 bidi-inhibit-bpa t
+
+                ;; Directories
+                delete-by-moving-to-trash t
                 )
 
   ;; Toggle features not available in a fresh Emacs install
@@ -57,8 +60,8 @@
   (add-to-list 'Info-default-directory-list "~/Documents/Info")
 
   ;; Pick up global NPM packages
-  (add-to-list 'exec-path "~/node_modules/.bin")
-  (add-to-list 'exec-path "~/.nvm/versions/node/v14.2.0/bin/")
+  (add-to-list 'exec-path " ~/node_modules/.bin")
+  (add-to-list 'exec-path "~/.nvm/versions/node/v14.17.6/bin/")
 
   (prefer-coding-system 'utf-8)
   (global-set-key (kbd "C-x k") 'kill-this-buffer) ; Kill the current buffer without warning
@@ -190,7 +193,6 @@ Most of these improve coding experience.
    (add-hook 'scheme-mode-hook 'electric-pair-local-mode)
    (add-hook 'python-mode-hook 'electric-pair-local-mode)
    (add-hook 'css-mode-hook 'electric-pair-local-mode)
-   (add-hook 'js-jsx-mode 'electric-pair-local-mode)
 
    ;; Add extra pairs for org mode
    (defvar org-electric-pairs '((?= . ?=)) "Electric pairs for org-mode.")
@@ -211,7 +213,7 @@ Most of these improve coding experience.
    (defun js-jsx-mode-add-electric-pairs ()
      (setq-local electric-pair-pairs (append electric-pair-pairs js-jsx-mode-electric-pairs))
      (setq-local electric-pair-text-pairs electric-pair-pairs))
-   (add-hook 'js-jsx-mode-hook 'js-jsx-mode-add-electric-pairs)
+   (add-hook 'js-mode-hook 'js-jsx-mode-add-electric-pairs)
 
    ;; Add extra pairs for web mode (jinja)
    (defvar web-mode-jinja-electric-pairs '((?% . ?%) (?< . ?>)) "Electric pairs for web-mode.")
@@ -416,6 +418,19 @@ Manage several buffers interactively
       (define-key js-mode-map (kbd "C-c C-b") 'sgml-skip-tag-backward)
       (define-key js-mode-map (kbd "C-c C-k") 'sgml-delete-tag))
 
+
+    (add-hook 'js-mode-hook 'prettier-js-mode)
+    (setq prettier-js-args '(
+                             "--print-width" "80"
+                             "--tab-width" "2"
+                             "--use-tabs" "false"
+                             "--semi" "false"
+                             "--single-quote" "true"
+                             "--bracket-spacing" "true"
+                             "--jsx-bracket-same-line" "true"
+                             "--trailing-comma" "none"
+                             "--arrow-parens" "avoid"
+                             ))
   #+end_src
 ** Lisp
 *** Clojure
