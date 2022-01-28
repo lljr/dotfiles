@@ -14,7 +14,7 @@
   (save-place-mode 1)           ; Remember cursor position
   (display-time-mode 1)         ; Display time in modeline
   (blink-cursor-mode 0)			; Stop cursor blink
-  (load-theme 'wombat nil)
+  (load-theme 'modus-vivendi nil)
 #+END_SRC
 
 ** General changes
