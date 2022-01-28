@@ -38,6 +38,7 @@
 
                 ;; Directories
                 delete-by-moving-to-trash t
+                auto-revert-check-vc-info t
                 )
 
   ;; Toggle features not available in a fresh Emacs install
