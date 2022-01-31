@@ -423,12 +423,12 @@ Manage several buffers interactively
     (add-hook 'js-mode-hook 'prettier-js-mode)
     (setq prettier-js-args '(
                              "--print-width" "80"
+                             "--bracket-same-line" "true"
                              "--tab-width" "2"
                              "--use-tabs" "false"
                              "--semi" "false"
                              "--single-quote" "true"
                              "--bracket-spacing" "true"
-                             "--jsx-bracket-same-line" "true"
                              "--trailing-comma" "none"
                              "--arrow-parens" "avoid"
                              ))
