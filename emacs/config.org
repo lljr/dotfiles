@@ -72,7 +72,7 @@
 
   ;; Change Emacs backup files location
   (setq backup-directory-alist
-        '(("." . "~/.emacs.d/file-backups")))
+        '(("." . "~/.config/emacs")))
 
   ;; This change prevents the crashing of the React server after any file change
   (setq create-lockfiles nil)
