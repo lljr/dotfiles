@@ -1,6 +1,6 @@
 #+STARTUP: overview hidestars
 #+AUTHOR: Jonathan Rostran
-#+PROPERTY: header-args:emacs-lisp :tangle ~/.emacs.d/init.el :comments no :results silent
+#+PROPERTY: header-args:emacs-lisp :tangle ~/.config/emacs/init.el :comments no :results silent
 
 * Emacs Setup
  Emacs documents all of its variables.
