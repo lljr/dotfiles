@@ -382,6 +382,8 @@ Manage several buffers interactively
   ;; Remap css-lookup-symbol to fix global counsel-mode key rebindings
   (add-hook 'css-mode-hook
             (lambda () (define-key css-mode-map (kbd "C-h S") 'css-lookup-symbol)))
+
+  (setq css-indent-offset 2)
 #+END_SRC
 *** Web Mode
 #+BEGIN_SRC emacs-lisp
