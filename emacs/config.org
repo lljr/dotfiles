@@ -333,31 +333,6 @@ Manage several buffers interactively
   (global-set-key (kbd "C-x C-b") 'ibuffer)
 #+END_SRC
 
-** Yasnippet
-#+begin_src emacs-lisp
-  (with-eval-after-load 'yasnippet
-    (add-to-list 'yas-snippet-dirs "~/src/guix/etc/snippets")
-    (yas-reload-all)
-    ;; TODO Programatically create "snippets" directory,
-    ;; snippet's modes and
-    ;; append snippet content
-    ;; do this on first install
-
-    ;; `make-directory' singals an error so we use condition-case
-    ;; to handle it
-    ;; (condition-case nil
-
-
-    ;;     (if (= (concat (getenv "HOME") ".emacs.d/")
-    ;;            (file-name-directory (or load-file-name (buffer-file-name))))
-    ;;         (progn
-    ;;           (make-directory "snippets/js-mode" t)
-    ;;           )
-    ;;       (message "Error creating Yasnippets directory: Incorrect directory.")
-    ;;      )
-        )
-#+end_src
-
 ** Web Development
 *** CSS
 #+BEGIN_SRC emacs-lisp
