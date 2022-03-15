@@ -342,28 +342,7 @@ Manage several buffers interactively
 
   (setq css-indent-offset 2)
 #+END_SRC
-*** Web Mode
-#+BEGIN_SRC emacs-lisp
-  (add-to-list 'auto-mode-alist '("/templates/.*\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.\\(handlebars\\|hbs\\)\\'" . web-mode))
 
-  (with-eval-after-load 'web-mode
-    (setq	web-mode-engines-alist
-          '(("ctemplate" . "\\.\\(handlebars\\|hbs\\)\\'")
-            ("django" . "./templates/.*\\.html?\\'"))
-
-          web-mode-enable-html-entities-fontification t
-          web-mode-enable-css-colorization t
-          web-mode-enable-current-column-highlight t
-          web-mode-markup-indent-offset 2
-          web-mode-enable-auto-closing t
-          web-mode-enable-auto-opening t
-          web-mode-enable-auto-pairing nil
-          web-mode-enable-auto-indentation nil
-
-          web-mode-code-indent-offset 2))
-
-#+END_SRC
 *** Javascript
   #+begin_src emacs-lisp
     (setq js-indent-level 2)
