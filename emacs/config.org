@@ -283,7 +283,7 @@ Most of these improve coding experience.
    (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
  #+end_src
 * Packages
-** Vertico / CtrlF / Marginalia / Consult
+** Vertico / Orderless / CtrlF / Marginalia / Consult
   Better buffer search and improved minibuffer experience
   #+begin_src emacs-lisp
     (vertico-mode)
