@@ -171,13 +171,6 @@ Most of these improve coding experience.
    (add-hook 'python-mode-hook 'electric-pair-local-mode)
    (add-hook 'css-mode-hook 'electric-pair-local-mode)
 
-   ;; Add extra pairs for org mode
-   (defvar org-electric-pairs '((?= . ?=)) "Electric pairs for org-mode.")
-   (defun org-add-electric-pairs ()
-     (setq-local electric-pair-pairs (append electric-pair-pairs org-electric-pairs))
-     (setq-local electric-pair-text-pairs electric-pair-pairs))
-   (add-hook 'org-mode-hook 'org-add-electric-pairs)
-
    ;; Add extra pairs for js-mode
    (defvar js-mode-electric-pairs '((?` . ?`)) "Electric pairs for js-mode.")
    (defun js-mode-add-electric-pairs ()
@@ -191,12 +184,6 @@ Most of these improve coding experience.
      (setq-local electric-pair-pairs (append electric-pair-pairs js-jsx-mode-electric-pairs))
      (setq-local electric-pair-text-pairs electric-pair-pairs))
    (add-hook 'js-mode-hook 'js-jsx-mode-add-electric-pairs)
-
-   ;; Add extra pairs for web mode (jinja)
-   (defvar web-mode-jinja-electric-pairs '((?% . ?%) (?< . ?>)) "Electric pairs for web-mode.")
-   (defun web-mode-add-jinja-electric-pairs ()
-     (setq-local electric-pair-pairs (append electric-pair-pairs web-mode-jinja-electric-pairs)))
-   (add-hook 'web-mode-hook 'web-mode-add-jinja-electric-pairs)
 
    ;; Subword Mode
    (add-hook 'js-mode-hook #'subword-mode)
@@ -221,13 +208,6 @@ Most of these improve coding experience.
       )
 
     (add-hook 'tex-mode-hook 'my-add-pretty-lambda)
-
-    (add-hook 'org-mode-hook (lambda ()
-                               "Beautify Org Checkbox Symbol"
-                               (push '("[ ]" .  "▢") prettify-symbols-alist)
-                               (push '("*" .  "◉") prettify-symbols-alist)
-                               (push '("[X]" . "☑" ) prettify-symbols-alist)
-                               (push '("[-]" . "❍" ) prettify-symbols-alist)))
 
     (add-hook 'emacs-lisp-mode-hook
               (lambda ()
