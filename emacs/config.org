@@ -297,6 +297,17 @@ Most of these improve coding experience.
         ;;(file grid)
         (consult-grep buffer)))
 
+;; adjust number of available candidates when buffer is resized
+(defun vertico-resize--minibuffer ()
+  (add-hook 'window-size-change-functions
+	    (lambda (win)
+	      (let ((height (window-height win)))
+		(when (/= (1- height) vertico-count)
+		  (setq-local vertico-count (1- height))
+		  (vertico--exhibit))))
+	    t t))
+
+(advice-add #'vertico--setup :before #'vertico-resize--minibuffer)
   #+end_src
 ** Company
 Auto-completion in Emacs.
