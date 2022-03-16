@@ -385,11 +385,3 @@ Manage several buffers interactively
     (setq cider-eval-result-prefix ";; => ")
     (setq cider-repl-display-help-banner nil)
   #+end_src
-
-*** Scheme
- #+begin_src emacs-lisp
-   (setq geiser-active-implementations '(guile))
-
-   (with-eval-after-load 'geiser-guile
-     (add-to-list 'geiser-guile-load-path "~/src/guix"))
- #+end_src
