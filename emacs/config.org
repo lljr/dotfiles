@@ -129,15 +129,6 @@
           org-catch-invisible-edits t
           ))
 
-  ;; Org Roam Setup
-  ;; (setq org-roam-v2-ack t) ;; disable v1 to v2 migration warning
-  ;; (setq org-roam-directory (file-truename "~/org-roam"))
-  ;; (org-roam-setup)
-  ;; (global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
-  ;; (global-set-key (kbd "C-c n f") 'org-roam-node-find)
-  ;; (global-set-key (kbd "C-c n i") 'org-roam-node-insert)
-
-
   ;; Org Babel Setup
   (org-babel-do-load-languages
    'org-babel-load-languages
