@@ -76,6 +76,9 @@
 
   ;; This change prevents the crashing of the React server after any file change
   (setq create-lockfiles nil)
+  
+  ;; inherit PATH from shell, depends on `exec-path-from-shell' package
+  (exec-path-from-shell-initialize)
 #+END_SRC
 
 ** Custom prefix keys
@@ -383,12 +386,6 @@ Manage several buffers interactively
     (setq cider-repl-display-help-banner nil)
   #+end_src
 
-**** Exec-path/CLJS setup
-    To use Node with NVM use this
-    #+begin_src emacs-lisp
-      (exec-path-from-shell-copy-env "PATH")
-      (exec-path-from-shell-initialize)
-    #+end_src
 *** Scheme
  #+begin_src emacs-lisp
    (setq geiser-active-implementations '(guile))
