@@ -334,7 +334,7 @@ Manage several buffers interactively
     (setq js-indent-level 2)
 
     (add-hook 'js-mode-hook 'js-jsx-enable)
-
+    (add-hook 'js-mode-hook 'eglot-ensure)
     (with-eval-after-load 'js
       (require 'sgml-mode)
       (define-key js-mode-map (kbd "C-c C-e") 'sgml-close-tag)
