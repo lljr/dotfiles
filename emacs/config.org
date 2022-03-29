@@ -356,6 +356,7 @@ Manage several buffers interactively
                              "--trailing-comma" "none"
                              "--arrow-parens" "avoid"
                              ))
+   (eval-after-load 'js '(define-key js-mode-map (kbd "M-.") nil))
   #+end_src
 *** Linter
 #+begin_src emacs-lisp
