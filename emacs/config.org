@@ -360,7 +360,7 @@ Manage several buffers interactively
 *** Linter
 #+begin_src emacs-lisp
 (add-hook 'js-mode-hook #'add-node-modules-path) ;; needed to pick up local `node_modules/' executables
-(add-hook 'js-mode-hook 'flycheck-mode)
+;; Eslint managed through Eglot
 #+end_src
 ** Lisp
 *** Clojure
