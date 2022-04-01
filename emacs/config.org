@@ -273,6 +273,13 @@ Most of these improve coding experience.
     (global-set-key (kbd "M-s G") 'consult-git-grep)
     (global-set-key (kbd "M-g g") 'consult-goto-line)
     (global-set-key (kbd "M-g M-g") 'consult-goto-line)
+    (global-set-key (kbd "M-g f") 'consult-flymake)
+    (global-set-key (kbd "C-x p b") 'consult-project-buffer)
+    (global-set-key (kbd "M-s l") 'consult-line)
+    
+    ;; Use Consult to select xref locations with preview
+    (setq xref-show-xrefs-function #'consult-xref
+          xref-show-definitions-function #'consult-xref)
     
     ;; Enable vertico-multiform
 (vertico-multiform-mode)
