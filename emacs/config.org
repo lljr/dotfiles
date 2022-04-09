@@ -39,6 +39,8 @@
                 ;; Directories
                 delete-by-moving-to-trash t
                 auto-revert-check-vc-info t
+                
+                use-short-answers t
                 )
 
   ;; Toggle features not available in a fresh Emacs install
@@ -64,7 +66,6 @@
   (global-set-key (kbd "C-x k") 'kill-this-buffer) ; Kill the current buffer without warning
 
   (global-so-long-mode 1)
-  (fset 'yes-or-no-p 'y-or-n-p) ; Prompts that require 'yes' or 'no' accept 'y' or 'n'
 
   ;; Change Emacs backup files location
   (setq backup-directory-alist
