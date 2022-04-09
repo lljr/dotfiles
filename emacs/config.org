@@ -98,13 +98,11 @@
 
   ;; Set of mapped keys in `C-z'
   (define-key my-super-z-map (kbd "o") 'browse-url-at-point)
-  (define-key my-super-z-map (kbd "r") 'revert-buffer)
   (define-key my-super-z-map (kbd "a") 'add-file-local-variable-prop-line)
 #+END_SRC
 
 ** Org
 #+begin_src emacs-lisp
-  (global-set-key (kbd "<f6>") 'org-capture)
   (with-eval-after-load 'org
     (visual-line-mode 1) ; wrap lines
     (setq org-src-fontify-natively t    ; highlight syntax in code source blocks
