@@ -147,9 +147,6 @@ Nice to have packages and functionality.
 Most of these improve coding experience.
 *** Misc
  #+begin_src emacs-lisp
-   ;; Highlight matching parenthesis
-   (show-paren-mode t)
-
    ;; Electric Layout Mode
    (add-hook 'css-mode 'electric-layout-mode)    ; insert newline after the insertion of '{'
 
