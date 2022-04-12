@@ -361,4 +361,13 @@ Manage several buffers interactively
     (setq cider-font-lock-dynamically '(macro core function var))
     (setq cider-eval-result-prefix ";; => ")
     (setq cider-repl-display-help-banner nil)
+    ;; cljfmt
+    (add-hook 'before-save-hook 'cider-format-buffer t t)
+    (setq cider-format-code-options
+          '(("remove-surrounding-whitespace?"  t)
+            ("remove-trailing-whitespace?" t)
+            ("remove-consecutive-blank-lines?" t)
+            ("insert-missing-whitespace?" t)
+            ("split-keypairs-over-multiple-lines?" t)
+            ("remove-multiple-non-indenting-spaces?" t)))
   #+end_src
