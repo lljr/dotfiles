@@ -74,6 +74,7 @@
   (setq create-lockfiles nil)
   
   ;; inherit PATH from shell, depends on `exec-path-from-shell' package
+  (exec-path-from-shell-copy-envs '("LANG" "LC_TYPE" "SSH_AUTH_SOCK" "SSH_AGENT_PID"))
   (exec-path-from-shell-initialize)
 #+END_SRC
 
